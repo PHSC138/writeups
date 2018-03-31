@@ -127,9 +127,12 @@ Here is the cleartext of your input :
 
 123360975347216093033775350245751721746535757669936
 ```
+Which isn't right :(
+
+
 This is when the CTF ended...
 
-To get the right ciphertext you had to encrypt the cipherText with the public key, convert to decimal and send it to the server (thx <pzoejkdfez> )
+To get the right ciphertext you had to encrypt the cipherText file with the pubkey.pem, convert the output to decimal, then send it to the server which is the correct solution
 It spits out: 
 ```
 Th1s1s2P@ss_W0rd%M0f0
