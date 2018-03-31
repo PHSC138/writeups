@@ -109,7 +109,9 @@ cGhlclRleHRVVAUAA8PCO1p1eAsAAQQAAAAABAAAAABQSwUGAAAAAAMAAwD1AAAAVQIAAAAA
 <img src='docs.zip.png'/>
 
 It's base64 encdoed ("Content-Transfer-Encoding: base64") I could have also decoded it in wireshark before but this works as well..
+```
 base64 -d < doc > docs.zip
+```
 
 unzip docs.zip
 
@@ -119,15 +121,16 @@ The mydomain... is just the url from the challenge page: kebabsto.challs.malice.
 There was an error in the file, the port is actually 8888 and not 55555
 
 inputted the cipherText and got 
-"Here is the cleartext of your input :
+```
+Here is the cleartext of your input :
 
 
-123360975347216093033775350245751721746535757669936"
-
+123360975347216093033775350245751721746535757669936
+```
 This is when the CTF ended...
 
-To get the right ciphertext you had to encrypt it with the public key and send it to the server
-(Didn't know how to do this) but it spits out: 
+To get the right ciphertext you had to encrypt the cipherText with the public key, convert to decimal and send it to the server (thx <pzoejkdfez> )
+It spits out: 
 ```
 Th1s1s2P@ss_W0rd%M0f0
 ```
