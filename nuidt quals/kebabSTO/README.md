@@ -1,36 +1,40 @@
+# KEBAB STO
 We start with kebabsto.pcapng, so our first step is to open it in Wireshark.
 
 From stream 5 we see two huge hints:
 1) "The name of the file begins with "kd"
 and
 2) "they also found a service at mydomainndh.ndh (port 55555) which decrypts every text encrypted with the public key, apart from the interesting one"
-
+## Part 1:
 We'll start with #1:
 In stream 11 we can see that there is a file being got "GET /kdsqfkpdsdf"
 <img src='stream11.png'/>
 
 Try to export HTML file: 
-<img src='ExportHTTP.png'/>
+mg src='ExportHTTP.png'/>
 
 We save it, and it's a zip file
-file kdsqfkpdsdf
 ```
+file kdsqfkpdsdf
 kdsqfkpdsdf: Zip archive data, at least v2.0 to extract
 ```
+
 When we unzip it, it's another tcp stream
-file lkdjflknezcz
+
 ```
+file lkdjflknezcz
 lkdjflknezcz: tcpdump capture file (little-endian) - version 2.4 (802.11, capture length 65535)
 ```
+
 Going through this dump we see it's 802.11 so we can't actually see what the packets are...
 We have a full 4 way handshake 
 <img src='EAPOL.png'/>
 and the SSID wifiAccess from packet 761/765... etc. 
 
 So let's do some aircrack-ng with the rockyou password list...
-aircrack-ng lkdjflknezcz -w ../rockyou.txt
 
 ```
+aircrack-ng lkdjflknezcz -w ../rockyou.txt
 Opening lkdjflknezcz
 Read 1358 packets.
 
@@ -63,12 +67,22 @@ Reading packets, please wait...
       EAPOL HMAC     : 76 32 AE BA 65 FD A2 64 BD FD 8E 76 BA 1F B7 84
 ```
 It found the key very quick!!
-So now we go into the 802.11 protocol settings: to add the decryption key:SSID (wifiAccess) abcdefgh:wifiAccess
+So now we go into the 802.11 protocol settings: to add the decryption key:SSID (wifiAccess) 
+abcdefgh:wifiAccess
+
 <img src='keys.png'/>
 
 In packet 1292 there's another zip file, save as raw to "slkfdsfljkj"
-tried to unzip and it's asking for a password...
+<img src='1292.png'/>
 
+Tried to unzip and it's asking for a password...
+```
+unzip slkfdsfljkj
+Archive:  slkfdsfljkj
+[slkfdsfljkj] slkfdsflj password:
+```
+
+## Part 2
 Time to go to #2!
 2) "they also found a service at mydomainndh.ndh (port 55555) which decrypts every text encrypted with the public key, apart from the interesting one"
 We use follow TCP stream of the FIRST .pcap (kebabsto.pcapng), we see a mail conversation and a file being sent.
