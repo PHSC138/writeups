@@ -57,7 +57,7 @@ we have a full 4 way handshake and the SSID wifiAccess so let's do some aircrack
 
 aircrack-ng lkdjflknezcz -w ../rockyou.txt
 
-'''
+```
 Opening lkdjflknezcz
 Read 1358 packets.
 
@@ -88,7 +88,7 @@ Reading packets, please wait...
                        37 C9 12 11 5B DA 0C E9 D8 25 02 5E F3 D2 AA 4F
 
       EAPOL HMAC     : 76 32 AE BA 65 FD A2 64 BD FD 8E 76 BA 1F B7 84
-'''
+```
 
 found the key very quick!!
 add to the 802.11 decryption keys along with the SSID (wifiAccess)
