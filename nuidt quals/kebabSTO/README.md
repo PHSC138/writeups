@@ -10,7 +10,7 @@ In stream 11 we can see that there is a file being got "GET /kdsqfkpdsdf"
 <img src='stream11.png'/>
 
 Try to export HTML file: 
-<img src='exportHTTP.png'/>
+<img src='ExportHTTP.png'/>
 
 We save it, and it's a zip file
 file kdsqfkpdsdf
