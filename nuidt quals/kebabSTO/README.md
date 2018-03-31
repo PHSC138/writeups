@@ -53,8 +53,11 @@ we save it, and it's a zip
 
 when we unzip it, it's another tcp stream
 
-we have a full 4 way handshake and the SSID wifiAccess so let's do some aircrack-ng
+we have a full 4 way handshake and the SSID wifiAccess so let's do some aircrack-ng with the rockyou password list...
 
+aircrack-ng lkdjflknezcz -w ../rockyou.txt
+
+'''
 Opening lkdjflknezcz
 Read 1358 packets.
 
@@ -85,6 +88,8 @@ Reading packets, please wait...
                        37 C9 12 11 5B DA 0C E9 D8 25 02 5E F3 D2 AA 4F
 
       EAPOL HMAC     : 76 32 AE BA 65 FD A2 64 BD FD 8E 76 BA 1F B7 84
+'''
+
 found the key very quick!!
 add to the 802.11 decryption keys along with the SSID (wifiAccess)
 
@@ -95,5 +100,13 @@ tried to unzip and it's asking for a password...
 
 This is when the CTF ended...
 
+To get the right ciphertext you had to encrypt it with the public key and send it to the server
+(Didn't know how to do this) but it spits out: Th1s1s2P@ss_W0rd%M0f0
 
+Had everything else, just needed to properly decode the password from cipher text
+
+after this we just unzip slkfdsfljkj with the password and get the flag:
+The flag is : ndh2k18{M4k3M4tr10cHKa9r34T4g41n}
+
+:/ I'll get it next time!
 
