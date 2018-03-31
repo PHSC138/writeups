@@ -1,17 +1,17 @@
 # KEBAB STO
 We start with kebabsto.pcapng, so our first step is to open it in Wireshark.
 
-From stream 5 we see two huge hints:
+From TCP stream 5 we see two huge hints:
 1) "The name of the file begins with "kd"
 and
 2) "they also found a service at mydomainndh.ndh (port 55555) which decrypts every text encrypted with the public key, apart from the interesting one"
 ## Part 1:
 We'll start with #1:
-In stream 11 we can see that there is a file being got "GET /kdsqfkpdsdf"
+In TCP stream 11 we can see that there is a file being got "GET /kdsqfkpdsdf"
 <img src='stream11.png'/>
 
 Try to export HTML file: 
-mg src='ExportHTTP.png'/>
+<img src='ExportHTTP.png'/>
 
 We save it, and it's a zip file
 ```
@@ -19,7 +19,7 @@ file kdsqfkpdsdf
 kdsqfkpdsdf: Zip archive data, at least v2.0 to extract
 ```
 
-When we unzip it, it's another tcp stream
+When we unzip it, it's another capture file
 
 ```
 file lkdjflknezcz
@@ -29,7 +29,7 @@ lkdjflknezcz: tcpdump capture file (little-endian) - version 2.4 (802.11, captur
 Going through this dump we see it's 802.11 so we can't actually see what the packets are...
 We have a full 4 way handshake 
 <img src='EAPOL.png'/>
-and the SSID wifiAccess from packet 761/765... etc. 
+and the SSID: "wifiAccess" from packet 761/765... etc. 
 
 So let's do some aircrack-ng with the rockyou password list...
 
