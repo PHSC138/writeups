@@ -127,15 +127,12 @@ Here is the cleartext of your input :
 
 123360975347216093033775350245751721746535757669936
 ```
-Which isn't right :(
+This output is the raw decryted value and the associated plaintext is easily retrievable :
 
-
-This is when the CTF ended...
-
-To get the right ciphertext you had to encrypt the cipherText file with the pubkey.pem, convert the output to decimal, then send it to the server which is the correct solution
-It spits out: 
-```
-Th1s1s2P@ss_W0rd%M0f0
+```python
+>>> from binascii import unhexlify
+>>> unhexlify(str(hex(123360975347216093033775350245751721746535757669936))[2:-1])
+'Th1s1s2P@ss_W0rd%M0f0'
 ```
 
 After this we just unzip slkfdsfljkj with the password and get the flag:
